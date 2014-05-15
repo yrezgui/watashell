@@ -1,0 +1,25 @@
+{
+  "name": "watashell",
+  "version": "0.1.0",
+  "homepage": "https://github.com/yrezgui/watashell",
+  "authors": [
+    "Yacine Rezgui <rezgui.y@gmail.com>"
+  ],
+  "description": "Shell in the browser with commands",
+  "keywords": [
+    "shell",
+    "codemirror",
+    "webworker"
+  ],
+  "license": "Apache Licence v2",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "codemirror": "~4.1.0"
+  }
+}
