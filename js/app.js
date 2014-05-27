@@ -35,13 +35,14 @@ Terminal.prototype.beforeSelectionChange = function beforeSelectionChange(cm, de
 Terminal.prototype.initShell = function initShell() {
   var self = this;
 
-  if (this.shell !== null) {
-    this.shell.terminate();
-  }
+  // if (this.shell !== null) {
+  //   this.shell.terminate();
+  // }
 
   this.shell = new Worker('js/shell.js');
 
   this.shell.addEventListener('message', function message(e) {
+    //self.initShell();
 
     var result = e.data.result;
 
@@ -51,7 +52,7 @@ Terminal.prototype.initShell = function initShell() {
   });
 
   this.shell.addEventListener('error', function error(e) {
-    self.initShell();
+    //self.initShell();
     term.addLine(e.message, 'error');
     term.addLine('', 'input');
     console.error(e.message);
