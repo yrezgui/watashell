@@ -1,0 +1,42 @@
+body{
+  font-size: 120%;
+  background: #202020;
+}
+
+#main {
+  width: 100%;
+  height: 100%;
+}
+
+.CodeMirror {
+  height: auto;
+}
+
+.CodeMirror-scroll {
+  overflow-y: hidden;
+  overflow-x: auto;
+}
+
+.cm-s-ambiance.CodeMirror {
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none;
+  background-image: none;
+}
+
+.terminal-input {
+  padding-left: 5px;
+}
+
+.terminal-input::before {
+  font-weight: bold;
+  content: "> ";
+}
+
+.plain-text, .plain-text span{
+  color: inherit !important;
+}
+
+.code-error, .code-error span {
+  color: #dd0017 !important;
+}
