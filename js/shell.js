@@ -185,11 +185,11 @@ var resume = {
   },
 
   languages: function languages() {
-    return ['JavaScript', 'HTML', 'CSS', 'PHP', 'SQL', 'Python (beginner)'];
+    return ['JavaScript', 'HTML', 'CSS', 'PHP', 'SQL', 'Python (beginner)', 'Go (going to learn)'];
   },
 
   technologies: function technologies() {
-    return ['WebRTC', 'Web workers', 'GraphDB', 'Firefox OS', 'NFC', 'Internet of objects', 'Machine Learning'];
+    return ['WebRTC', 'Web workers', 'GraphDB', 'Firefox OS', 'NFC', 'Internet of objects', 'Machine Learning', 'Elastichsearch', 'Docker'];
   },
 
   platforms: function platforms() {
