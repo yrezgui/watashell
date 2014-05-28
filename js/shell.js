@@ -97,16 +97,36 @@ function socialHelp() {
 }
 
 var social = {
+  facebook: function twitter() {
+    return 'I use it for my family and friends. Ping me on Twitter or Google+';
+  },
+
   twitter: function twitter() {
     return 'http://twitter.com/yrezgui';
+  },
+
+  lastTweet: function lastTweet() {
+    return 'Twitter API has to many limitations now. Sorry dude :(';
   },
 
   github: function github() {
     return 'https://github.com/yrezgui';
   },
 
+  lastGithubEvent: function lastGithubEvent(data) {
+    if(!data) {
+      importScripts("https://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20json%20where%20url%3D%22https%3A%2F%2Fapi.github.com%2Fusers%2Fyrezgui%2Fevents%2Fpublic%22&format=json&callback=social.lastGithubEvent");
+    } else {
+      self.postMessage('"' + data.query.results.json.json[0].type + ' | ' + data.query.results.json.json[0].repo.url + '"');
+    }
+  },
+
   googlePlus: function googlePlus() {
     return 'http://google.com/+YacineRezgui';
+  },
+
+  lastStatus: function lastStatus(data) {
+    return 'Google+ API does not have a public API. Sorry dude :(';
   },
 
   linkedin: function linkedin() {
@@ -115,6 +135,14 @@ var social = {
 
   medium: function medium() {
     return 'https://medium.com/@yrezgui';
+  },
+
+  lastPost: function getLastPost(data) {
+    if(!data) {
+      importScripts("https://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20rss%20where%20url%3D'https%3A%2F%2Fmedium.com%2Ffeed%2F%40yrezgui'&format=json&callback=social.lastPost");
+    } else {
+      self.postMessage('"' + data.query.results.item[0].title + ' | ' + data.query.results.item[0].link + '"');
+    }
   },
 
   oldBlog: function oldBlog() {
