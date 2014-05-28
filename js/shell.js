@@ -25,7 +25,7 @@ function profileHelp() {
   self.postMessage(' profile.series()  // Show the series that I watch(ed)');
   self.postMessage(' profile.kdramas()  // Show the Korean series that I watch(ed)');
   self.postMessage(' profile.jdramas()  // Show the Japanese series that I watch(ed)');
-  self.postMessage(' profile.jdramas()  // Show the mangas that I watch(ed)/read');
+  self.postMessage(' profile.mangas()  // Show the mangas that I watch(ed)/read');
   self.postMessage('');
 }
 
