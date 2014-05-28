@@ -59,12 +59,15 @@ Terminal.prototype.addLine = function addLine(content, type, noLineBreak) {
     separator = '';
   }
 
+  this.editor.markText(CodeMirror.Pos(this.editor.firstLine()), CodeMirror.Pos(this.editor.lastLine() - 1), {readOnly: true});
+
   if(type === 'input') {
     this.editor.replaceRange(separator + content, CodeMirror.Pos(term.editor.lastLine()));
     term.editor.addLineClass(term.editor.lastLine(), 'text', 'terminal-input');
   } else if(type === 'initial') {
     this.editor.replaceRange(separator + content, CodeMirror.Pos(term.editor.lastLine()));
     term.editor.addLineClass(term.editor.lastLine(), 'text', 'initial-text');
+    this.editor.markText(CodeMirror.Pos(this.editor.lastLine()), CodeMirror.Pos(this.editor.lastLine()), {readOnly: true});
   } else {
 
     if(lastLine.textClass !== 'terminal-input') {
@@ -72,6 +75,7 @@ Terminal.prototype.addLine = function addLine(content, type, noLineBreak) {
     }
 
     this.editor.replaceRange(separator + content, CodeMirror.Pos(term.editor.lastLine() - 1));
+    this.editor.markText(CodeMirror.Pos(this.editor.lastLine() - 1), CodeMirror.Pos(this.editor.lastLine() - 1), {readOnly: true});
 
     if(type === 'plain') {
       term.editor.addLineClass(term.editor.lastLine() - 1, 'text', 'plain-text');
