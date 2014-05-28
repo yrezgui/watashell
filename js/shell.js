@@ -87,12 +87,17 @@ var profile = {
 function socialHelp() {
   self.postMessage('//You can use these different methods');
   self.postMessage('');
-  self.postMessage(' social.twitter()  // Show my twitter account');
+  self.postMessage(' social.facebook()  // Show my Facebook account');
+  self.postMessage(' social.twitter()  // Show my Twitter account');
+  self.postMessage(' social.lastTweet()  // Show my last tweet');
   self.postMessage(' social.github()  // Show my Github account');
+  self.postMessage(' social.lastGithubEvent()  // Show my last Github activity');
   self.postMessage(' social.googlePlus()  // Show my Google+ account');
+  self.postMessage(' social.googlePlus()  // Show my last Google+ status');
   self.postMessage(' social.linkedin()  // Show my LinkedIn account');
   self.postMessage(' social.medium()  // Show my Medium account');
-  self.postMessage(' social.oldBlog()  // Show my old blog (on Tumblr)');
+  self.postMessage(' social.lastPost()  // Show my last blog post');
+  self.postMessage(' social.oldBlog()  // Show my old blog on Tumblr');
   self.postMessage('');
 }
 
