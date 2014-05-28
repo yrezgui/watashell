@@ -18,6 +18,8 @@ function Terminal(domElement, mode, theme) {
     }
   });
 
+  this.editor.markText(CodeMirror.Pos(this.editor.firstLine()), CodeMirror.Pos(this.editor.lastLine()), {readOnly: true, className: 'initial-text'});
+
   this.editor.on('beforeChange', this.beforeChange);
 
   this.shell = null;
@@ -88,9 +90,4 @@ Terminal.prototype.executeCode = function executeCode() {
 
 var term = new Terminal(textarea, 'javascript', 'ambiance');
 
-term.addLine('Welcome to a self guided tour of my profile shell.', 'initial', true);
-term.addLine('This shell is written in JavaScript. It is executed in a web worker.', 'initial');
-term.addLine('It is sandboxed, so have fun of trying to hack it :)', 'initial');
-term.addLine('', 'initial');
-term.addLine('Get started with this function: `help()`', 'initial');
 term.addLine('help()', 'input');
