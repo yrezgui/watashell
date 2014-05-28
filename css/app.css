@@ -33,7 +33,7 @@ body{
   content: "> ";
 }
 
-.plain-text, .plain-text span{
+.plain-text, .plain-text span, .initial-text, .initial-text span{
   color: inherit !important;
 }
 
