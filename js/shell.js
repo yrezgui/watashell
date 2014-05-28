@@ -5,11 +5,16 @@ self.addEventListener('message', function(e) {
 function help() {
   self.postMessage('//You can use these different fonctions');
   self.postMessage('');
-  self.postMessage(' profileHelp()  // Show functions around my profile');
-  self.postMessage(' socialHelp()  // Show functions around my social activity');
+  self.postMessage(' profileHelp()  // Show methods about my profile');
+  self.postMessage(' socialHelp()  // Show methods about my social activity');
+  self.postMessage(' resumeHelp()  // Show methods about my resume');
+  self.postMessage(' log()  // Console.log or alert are not available in a web worker');
   self.postMessage('');
 }
 
+function log() {
+  return arguments[0];
+}
 
 function profileHelp() {
   self.postMessage('//You can use these different methods');
@@ -152,5 +157,78 @@ var social = {
 
   oldBlog: function oldBlog() {
     return 'http://blog.yrezgui.com/';
+  }
+};
+
+function resumeHelp() {
+  self.postMessage('//You can use these different methods');
+  self.postMessage('');
+  self.postMessage(' resume.level()  // Show my current level');
+  self.postMessage(' resume.languages()  // Show the languages that I know');
+  self.postMessage(' resume.technologies()  // Show the technologies that I\'m excited about');
+  self.postMessage(' resume.platforms()  // Show the platforms which I develop with');
+  self.postMessage(' resume.databases()  // Show the databases that I use(d)');
+  self.postMessage(' resume.editors()  // Show the editors that I use(d)');
+  self.postMessage(' resume.frameworksBack()  // Show the back frameworks that I used');
+  self.postMessage(' resume.frameworksFront()  // Show the front frameworks that I use');
+  self.postMessage(' resume.librariesFront()  // Show the front libraries that I use');
+  self.postMessage(' resume.meetups()  // Show the meetups where I gave a talk');
+  self.postMessage(' resume.conferences()  // Show the conferences that I attended');
+  self.postMessage(' resume.companies()  // Show the series that I watch(ed)');
+  self.postMessage(' resume.education()  // Show the Korean series that I watch(ed)');
+  self.postMessage('');
+}
+
+var resume = {
+  level: function name() {
+    return 'Intermediate';
+  },
+
+  languages: function languages() {
+    return ['JavaScript', 'HTML', 'CSS', 'PHP', 'SQL', 'Python (beginner)'];
+  },
+
+  technologies: function technologies() {
+    return ['WebRTC', 'Web workers', 'GraphDB', 'Firefox OS', 'NFC', 'Internet of objects', 'Machine Learning'];
+  },
+
+  platforms: function platforms() {
+    return ['Desktop browsers', 'Phonegap apps', 'Chrome apps', 'Firefox extensions'];
+  },
+
+  databases: function databases() {
+    return ['MongoDB', 'Redis', 'MySQL', 'CouchDB', 'Neo4j (beginner)'];
+  },
+
+  editors: function editors() {
+    return ['Sublime Text', 'Atom', 'Notepad++', 'WebStorm', 'Netbeans', 'Eclipse', 'Visual Studio'];
+  },
+
+  frameworksBack: function frameworksBack() {
+    return ['ExpressJS', 'CodeIgniter', 'Symfony', 'Flask (beginner)'];
+  },
+
+  frameworksFront: function frameworksFront() {
+    return ['AngularJS', 'BackboneJS', 'SammyJS', 'ReactJS (beginner)'];
+  },
+
+  librariesFront: function librariesFront() {
+    return ['Ionic', 'Lodash', 'MomentJS', 'XDomain', 'jQuery', 'Boostrap', 'Foundation'];
+  },
+
+  meetups: function meetups() {
+    return ['London Phonegap', 'Angular Paris', 'JSSophia'];
+  },
+
+  conferences: function conferences() {
+    return ['Apps World', 'DotJS', 'SudWeb'];
+  },
+
+  companies: function companies() {
+    return ['GovernorHub', 'Tequila Rapido', 'Médiamétrie eStat'];
+  },
+
+  education: function education() {
+    return ['Bachelor Degree in Computer Sciences at University of Nice Sophia-Antipolis'];
   }
 };
