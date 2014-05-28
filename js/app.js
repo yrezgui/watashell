@@ -28,10 +28,6 @@ Terminal.prototype.beforeChange = function beforeChange(cm, change) {
   var a = 1;
 };
 
-Terminal.prototype.beforeSelectionChange = function beforeSelectionChange(cm, details) {
-  var a = 1;
-};
-
 Terminal.prototype.initShell = function initShell() {
   var self = this;
 
@@ -97,4 +93,4 @@ term.addLine('This shell is written in JavaScript. It is executed in a web worke
 term.addLine('It is sandboxed, so have fun of trying to hack it :)', 'initial');
 term.addLine('', 'initial');
 term.addLine('Get started with this function: `help()`', 'initial');
-term.addLine('a', 'input');
+term.addLine('help()', 'input');
