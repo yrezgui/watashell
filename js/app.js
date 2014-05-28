@@ -44,39 +44,42 @@ Terminal.prototype.initShell = function initShell() {
   this.shell.addEventListener('message', function message(e) {
     //self.initShell();
 
-    var result = e.data.result;
-
-    self.addLine(result);
-    self.addLine('', 'input');
-    console.log(e.data.code + ' //=> ' + e.data.result);
+    self.addLine(e.data);
   });
 
   this.shell.addEventListener('error', function error(e) {
     //self.initShell();
-    term.addLine(e.message, 'error');
-    term.addLine('', 'input');
-    console.error(e.message);
+    self.addLine(e.message, 'error');
   });
 };
 
-Terminal.prototype.addLine = function addLine(content, type, multilines) {
+Terminal.prototype.addLine = function addLine(content, type, noLineBreak) {
   var lastLine  = term.editor.lineInfo(term.editor.lastLine());
-  var separator = '';
-
-  if(lastLine.text !== '') {
-    separator = '\n';
-  }
-
-  this.editor.replaceRange(separator + content, CodeMirror.Pos(term.editor.lastLine()));
+  var separator = '\n';
   
-  if(type === 'input') {
-    term.editor.addLineClass(term.editor.lastLine(), 'text', 'terminal-input');
+  if(noLineBreak) {
+    separator = '';
   }
 
-  if(type === 'plain') {
-    term.editor.addLineClass(term.editor.lastLine(), 'text', 'plain-text');
-  } else if(type === 'error') {
-    term.editor.addLineClass(term.editor.lastLine(), 'text', 'code-error');
+  if(type === 'input') {
+    this.editor.replaceRange(separator + content, CodeMirror.Pos(term.editor.lastLine()));
+    term.editor.addLineClass(term.editor.lastLine(), 'text', 'terminal-input');
+  } else if(type === 'initial') {
+    this.editor.replaceRange(separator + content, CodeMirror.Pos(term.editor.lastLine()));
+    term.editor.addLineClass(term.editor.lastLine(), 'text', 'initial-text');
+  } else {
+
+    if(lastLine.textClass !== 'terminal-input') {
+      this.addLine('', 'input');
+    }
+
+    this.editor.replaceRange(separator + content, CodeMirror.Pos(term.editor.lastLine() - 1));
+
+    if(type === 'plain') {
+      term.editor.addLineClass(term.editor.lastLine() - 1, 'text', 'plain-text');
+    } else if(type === 'error') {
+      term.editor.addLineClass(term.editor.lastLine() - 1, 'text', 'code-error');
+    }
   }
 };
 
@@ -84,14 +87,15 @@ Terminal.prototype.executeCode = function executeCode() {
   var lastLine = term.editor.lineInfo(term.editor.lastLine());
 
   this.shell.postMessage(lastLine.text);
+  this.addLine('', 'input');
 };
 
 var term = new Terminal(textarea, 'javascript', 'ambiance');
 
-term.addLine('Welcome to a self guided tour of my profile shell.', 'plain');
-term.addLine('This shell is written in JavaScript. It is executed in a web worker.', 'plain');
-term.addLine('It is sandboxed, so have fun of trying to hack it :)', 'plain');
-term.addLine('\n', 'plain');
-term.addLine('Get started with this function: `help()`', 'plain');
-term.addLine('To try out an interactive discover, type: `tour()`', 'plain');
+term.addLine('Welcome to a self guided tour of my profile shell.', 'initial', true);
+term.addLine('This shell is written in JavaScript. It is executed in a web worker.', 'initial');
+term.addLine('It is sandboxed, so have fun of trying to hack it :)', 'initial');
+term.addLine('', 'initial');
+term.addLine('Get started with this function: `help()`', 'initial');
+term.addLine('To try out an interactive discover, type: `tour()`', 'initial');
 term.addLine('a', 'input');
