@@ -97,5 +97,4 @@ term.addLine('This shell is written in JavaScript. It is executed in a web worke
 term.addLine('It is sandboxed, so have fun of trying to hack it :)', 'initial');
 term.addLine('', 'initial');
 term.addLine('Get started with this function: `help()`', 'initial');
-term.addLine('To try out an interactive discover, type: `tour()`', 'initial');
 term.addLine('a', 'input');
